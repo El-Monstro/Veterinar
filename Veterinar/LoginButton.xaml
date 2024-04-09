@@ -6,15 +6,30 @@
         xmlns:local="clr-namespace:Veterinar"
         mc:Ignorable="d"
         Title="LoginButton" Height="300" Width="400">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#3A77AF" Offset="0"/>
+            <GradientStop Color="#FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="0 5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#F0F0F0"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="ToolTipService.ShowDuration" Value="2000"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="Button">
@@ -25,11 +40,10 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="ToolTipService.ShowDuration" Value="2000"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -39,9 +53,8 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="289*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -49,19 +62,40 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Ветеринарная клиника" HorizontalAlignment="Left" FontSize="20" Margin="30,20,0,175" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="1"/>
+        <TextBlock Text="Ветеринарная клиника" HorizontalAlignment="Center" FontSize="20" Margin="0,20,0,0" Grid.ColumnSpan="2"/>
 
-        <StackPanel Grid.Row="1" Margin="20,20,20,20" Grid.ColumnSpan="3">
-            <StackPanel Orientation="Horizontal" Width="375">
+        <StackPanel Grid.Row="1" Margin="20,20,20,20" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" Width="350">
                 <TextBlock Text="Логин: " VerticalAlignment="Center"/>
-                <TextBox x:Name="UsernameTextBox" ToolTip="Username" Width="272"/>
+                <TextBox x:Name="UsernameTextBox" ToolTip="Username" Width="250"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Width="350" Margin="0 10">
                 <TextBlock Text="Пароль: " VerticalAlignment="Center"/>
-                <PasswordBox x:Name="PasswordBox" ToolTip="Password" Width="263"/>
+                <TextBox x:Name="PasswordTextBox" ToolTip="Password" Width="250">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Margin" Value="0 5"/>
+                            <Setter Property="Padding" Value="10 5"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="#F0F0F0"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </StackPanel>
             <Button Content="Login" Click="LoginButton_Click" HorizontalAlignment="Center" Width="100"/>
-            <TextBlock x:Name="ErrorMessageTextBlock" Text="" Foreground="Red" TextAlignment="Center"/>
+            <TextBlock x:Name="ErrorMessageTextBlock" Text="" Foreground="Red" TextAlignment="Center" Margin="0 10"/>
         </StackPanel>
     </Grid>
 </Window>

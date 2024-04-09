@@ -6,130 +6,31 @@
         xmlns:local="clr-namespace:Veterinar"
         mc:Ignorable="d"
         Title="MainWindow" 
-        WindowStyle ="None"
-        ResizeMode="NoResize"
+
         Background="#181735"
         Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        <!-- Верхняя панель с логотипом -->
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="Images/logo.png" Grid.ColumnSpan="2" Margin="6,0,677,321"/>
+            <TextBlock Grid.Column="1" Text="The Red Cat" Foreground="White" FontSize="20" FontWeight="Medium" VerticalAlignment="Top" Margin="10,114,-10,0"/>
+        </Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
-                <Image Width="70" Height="80"
-                       Source="Images/logo.png"/>
-                <TextBlock Text="The Red Cat"
-                           Foreground="White"
-                           FontSize="20"
-                           FontWeight="Medium"
-                           VerticalAlignment="Center"
-                           FontFamily="Fonts/#Dosis"/>
-            </StackPanel>
-
-            <TextBlock Text="Меню"
-                    Foreground="White"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Fonts/#Dosis"/>
-
-            <TextBlock Text="Меню"
-                    Foreground="White"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Fonts/#Dosis"/>
-
-            <TextBlock Text="Меню"
-                    Foreground="White"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Fonts/#Dosis"/>
-
-            <TextBlock Text="Меню"
-                    Foreground="White"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Fonts/#Dosis"/>
-            <Button Content="Start"
-                    Foreground="White"
-                    FontSize="14"
-                    FontWeight="Medium">
-
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                        <Setter Property="Background" Value="#FE6584"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF4C70"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Width="100" Height="25"
-                                CornerRadius="12"
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+        <!-- Панель с меню -->
+        <StackPanel Grid.Row="1" Margin="10,10,0,0">
+            <Button Content="Авторизация" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="202" Background="#FE6584" Foreground="White" Click="Button_Click"/>
+            <Button Content="Справочник пациентов" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="206" Background="#FE6584" Foreground="White" Click="Button_Click_1"/>
+            <Button Content="Справочник услуг" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="206" Background="#FE6584" Foreground="White" Click="Button_Click_2"/>
+            <Button Content="Принятые пациенты" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="206" Background="#FE6584" Foreground="White" Click="Button_Click_3"/>
+            <Button Content="Добавить прием" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="204" Background="#FE6584" Foreground="White" Click="Button_Click_4"/>
+            <Button Content="Отчет за день" Margin="0,0,0,10" Padding="10" FontSize="16" FontWeight="Bold" Width="201" Background="#FE6584" Foreground="White" Click="Button_Click_5"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal"/>
-
-        <Grid Background="#0F0F2D" Grid.ColumnSpan="2" Margin="0,12,0,412" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Text="Рыжий Кот"
-                       Foreground="White"
-                       Grid.Column="1"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Dosis"
-                       FontWeight="Medium"
-                       />
-
-            <TextBlock Text="Меню"
-           Foreground="LightGray"
-           Grid.Column="2"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"
-           FontFamily="Fonts/#Dosis"
-           />
-
-            <TextBlock Text="Веб-сайт"
-           Foreground="LightGray"
-           Grid.Column="3"
-           VerticalAlignment="Center"
-           HorizontalAlignment="Center"
-           FontFamily="Fonts/#Dosis"
-           />
-        </Grid>
+        <!-- Кнопка закрытия окна -->
+        <Button Content="X" Margin="10" Padding="5" FontSize="14" FontWeight="Bold" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#FE6584" Foreground="White" Click="CloseButton_Click"/>
     </Grid>
 </Window>

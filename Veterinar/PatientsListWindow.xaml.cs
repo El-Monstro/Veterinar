@@ -15,26 +15,21 @@ using System.Windows.Shapes;
 namespace Veterinar
 {
     /// <summary>
-    /// Логика взаимодействия для LoginButton.xaml
+    /// Логика взаимодействия для PatientsListWindow.xaml
     /// </summary>
-    public partial class LoginButton : Window
+    public partial class PatientsListWindow : Window
     {
-        public LoginButton()
+        public PatientsListWindow(List<Patient> patients)
         {
             InitializeComponent();
+            DataContext = patients;
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Создаем экземпляр окна MainWindow
             MainWindow mainWindow = new MainWindow();
-
-            // Показываем окно MainWindow
             mainWindow.Show();
-
-            // Закрываем текущее окно (окно авторизации)
-            this.Close();
+            Close();
         }
-
     }
 }
